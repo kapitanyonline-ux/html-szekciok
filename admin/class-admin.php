@@ -106,6 +106,12 @@ class HTML_Szekciok_Admin {
 			wp_send_json_error( 'Érvénytelen szekció.' );
 		}
 
+		// Szekció-címke (label) mentése, ha küldték — a sorszám/shortcode érintetlen.
+		if ( isset( $_POST['cimke'] ) ) {
+			$cimke = sanitize_text_field( wp_unslash( $_POST['cimke'] ) );
+			HTML_Szekciok_Database::update_section_cimke( $section_id, $cimke );
+		}
+
 		HTML_Szekciok_Database::update_section( $section_id, $html_kod );
 
 		// Tartalom mezők automatikus szinkronizálása.

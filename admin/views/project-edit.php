@@ -61,6 +61,10 @@ $szekciok = HTML_Szekciok_Database::get_sections( $projekt_id );
 		<div class="hs-section" id="hs-section-<?php echo $szekcio->id; ?>" data-section-id="<?php echo $szekcio->id; ?>">
 			<div class="hs-section-header">
 				<h3>Section <?php echo (int) $szekcio->sorszam; ?></h3>
+				<input type="text" class="hs-section-label" data-section-id="<?php echo $szekcio->id; ?>"
+					value="<?php echo esc_attr( $szekcio->cimke ); ?>"
+					placeholder="Szekció neve (pl. Hero, Árak)…" maxlength="255"
+					title="Csak az adminban látszik, a shortcode-ot nem érinti.">
 				<div class="hs-section-meta">
 					<span class="hs-shortcode-wrap">
 						<code class="hs-shortcode-chip" data-shortcode="[<?php echo esc_attr( $projekt->slug . '_' . $szekcio->sorszam ); ?>]" title="Kattints a másoláshoz">

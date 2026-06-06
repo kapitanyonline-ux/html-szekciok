@@ -21,6 +21,7 @@ class HTML_Szekciok_Import_Export {
 		foreach ( $szekciok as $s ) {
 			$data['szekciok'][] = [
 				'sorszam'  => (int) $s->sorszam,
+				'cimke'    => $s->cimke,
 				'html_kod' => $s->html_kod,
 			];
 		}
@@ -69,7 +70,8 @@ class HTML_Szekciok_Import_Export {
 		foreach ( $data['szekciok'] as $s ) {
 			$sorszam  = max( 1, (int) ( $s['sorszam'] ?? 1 ) );
 			$html_kod = $s['html_kod'] ?? '';
-			$sid      = HTML_Szekciok_Database::create_section( $projekt_id, $sorszam, $html_kod );
+			$cimke    = isset( $s['cimke'] ) ? sanitize_text_field( (string) $s['cimke'] ) : null;
+			$sid      = HTML_Szekciok_Database::create_section( $projekt_id, $sorszam, $html_kod, $cimke );
 
 			// Tartalom mezők azonnal kinyerve, hogy az import után is használható legyen az inline edit.
 			if ( class_exists( 'HTML_Szekciok_Content_Extractor' ) && $sid ) {

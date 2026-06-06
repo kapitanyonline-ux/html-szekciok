@@ -2,7 +2,7 @@
 /**
  * Plugin Name: HTML szekciók
  * Description: HTML snippet manager szekciókkal és shortcode-okkal
- * Version: 1.2.0
+ * Version: 1.3.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
@@ -12,7 +12,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'HTML_SZEKCIOK_VERSION',     '1.2.0' );
+define( 'HTML_SZEKCIOK_VERSION',     '1.3.0' );
 define( 'HTML_SZEKCIOK_PATH',        plugin_dir_path( __FILE__ ) );
 define( 'HTML_SZEKCIOK_URL',         plugin_dir_url( __FILE__ ) );
 define( 'HTML_SZEKCIOK_IMPORTS_DIR', HTML_SZEKCIOK_PATH . 'imports/' );

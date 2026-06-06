@@ -20,6 +20,7 @@ class HTML_Szekciok_Database {
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   projekt_id INT UNSIGNED NOT NULL,
   sorszam INT UNSIGNED NOT NULL,
+  cimke VARCHAR(255) DEFAULT NULL,
   html_kod LONGTEXT,
   letrehozva DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
   modositva DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -139,20 +140,32 @@ class HTML_Szekciok_Database {
 		return ( $max ?? 0 ) + 1;
 	}
 
-	public static function create_section( $projekt_id, $sorszam, $html_kod = '' ) {
+	public static function create_section( $projekt_id, $sorszam, $html_kod = '', $cimke = null ) {
 		global $wpdb;
 		$wpdb->insert(
 			"{$wpdb->prefix}fejlesztesek_szekciok",
 			[
 				'projekt_id' => $projekt_id,
 				'sorszam'    => $sorszam,
+				'cimke'      => ( $cimke === '' ? null : $cimke ),
 				'html_kod'   => $html_kod,
 				'letrehozva' => current_time( 'mysql' ),
 				'modositva'  => current_time( 'mysql' ),
 			],
-			[ '%d', '%d', '%s', '%s', '%s' ]
+			[ '%d', '%d', '%s', '%s', '%s', '%s' ]
 		);
 		return $wpdb->insert_id;
+	}
+
+	public static function update_section_cimke( $id, $cimke ) {
+		global $wpdb;
+		return $wpdb->update(
+			"{$wpdb->prefix}fejlesztesek_szekciok",
+			[ 'cimke' => ( $cimke === '' ? null : $cimke ) ],
+			[ 'id' => $id ],
+			[ '%s' ],
+			[ '%d' ]
+		);
 	}
 
 	public static function update_section( $id, $html_kod ) {

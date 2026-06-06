@@ -125,6 +125,7 @@ jQuery( document ).ready( function ( $ ) {
 			nonce:      cfg.nonce,
 			section_id: sid,
 			html_kod:   getContent( sid ),
+			cimke:      $( '#hs-section-' + sid + ' .hs-section-label' ).val() || '',
 		} )
 		.done( function ( res ) {
 			if ( res.success ) {
@@ -353,6 +354,7 @@ jQuery( document ).ready( function ( $ ) {
 		return `<div class="hs-section" id="hs-section-${sid}" data-section-id="${sid}">
   <div class="hs-section-header">
     <h3>Section ${sorszam}</h3>
+    <input type="text" class="hs-section-label" data-section-id="${sid}" value="" placeholder="Szekció neve (pl. Hero, Árak)…" maxlength="255" title="Csak az adminban látszik, a shortcode-ot nem érinti.">
     <div class="hs-section-meta">
       <span class="hs-shortcode-wrap">
         <code class="hs-shortcode-chip" data-shortcode="${sc}" title="Kattints a másoláshoz">${sc}</code>

@@ -117,7 +117,21 @@
 	background: #f6f7f7;
 	border-bottom: 1px solid #c3c4c7;
 }
-.hs-section-header h3 { margin: 0; font-size: 14px; font-weight: 600; }
+.hs-section-header h3 { margin: 0; font-size: 14px; font-weight: 600; white-space: nowrap; }
+
+/* Szekció-címke (label) — csak adminban, a shortcode-ot nem érinti */
+.hs-section-label {
+	flex: 1 1 auto;
+	max-width: 360px;
+	margin: 0 14px;
+	padding: 4px 8px;
+	font-size: 13px;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	background: #fff;
+}
+.hs-section-label:focus { border-color: #2271b1; box-shadow: 0 0 0 1px #2271b1; outline: 2px solid transparent; }
+.hs-section-label::placeholder { color: #8c8f94; font-style: italic; }
 
 .hs-section-meta {
 	display: flex;
